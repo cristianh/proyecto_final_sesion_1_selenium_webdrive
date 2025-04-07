@@ -1,7 +1,6 @@
 package io.demo.evershop.test;
 
 import com.demo.nopcommerce.models.User;
-import io.demo.evershop.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;

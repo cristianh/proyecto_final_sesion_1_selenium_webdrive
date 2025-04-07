@@ -1,12 +1,18 @@
-package io.demo.evershop;
+package io.demo.evershop.test;
 
 import com.github.javafaker.Faker;
+import io.demo.evershop.DataFacker;
+import io.demo.evershop.Variables;
+import io.demo.evershop.pages.ForgotPage;
+import io.demo.evershop.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 
 import java.time.Duration;
 
@@ -24,8 +30,13 @@ public class BaseTest {
     // Crear una espera explícita
     public WebDriverWait waitExplicit;
 
+    //Pages
 
-    @BeforeClass
+    protected LoginPage loginpage;
+    protected ForgotPage forgotpage;
+
+
+    @BeforeMethod
     public void setup(){
         //Paso 2: instanciar las variables
         // instanciamos el navegador a utilizar.
@@ -34,18 +45,15 @@ public class BaseTest {
         actions= new Actions(driver);
         //indicamos la configuración del navegador ( abrimos en modo maximizado)
         driver.manage().window().maximize();
-        //Especificamo un tiempo de espera a que los elementos esten presentes en la pagina
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIME_OUT));
-        // Crear una espera explícita
-        waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
-        //Abrimos la URL
-        driver.get(urlBase);
         //Cargamos la data fake para las pruebas
         dataFaker.dataUser();
+        //Instance Pages
+        loginpage =  new LoginPage(driver, urlBaseLogin);
+        forgotpage = new ForgotPage(driver);
     }
 
 
-    @AfterClass
+    @AfterMethod
     public void tearDown(){
         if(driver != null){
             //cerramos la sesion

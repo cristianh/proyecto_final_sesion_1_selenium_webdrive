@@ -1,7 +1,6 @@
 package io.demo.evershop.test;
 
 import com.demo.nopcommerce.models.User;
-import io.demo.evershop.BaseTest;
 import io.demo.evershop.pages.RegisterPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,7 +14,7 @@ import static io.demo.evershop.Variables.TIME_OUT;
 import static io.demo.evershop.pages.RegisterPage.*;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class HomePage2Test extends BaseTest {
+public class RegisterTest extends BaseTest {
 
 
     SoftAssert softAssertValidationInputs = new SoftAssert();
@@ -79,11 +78,11 @@ public class HomePage2Test extends BaseTest {
         WebElement inputPhoneNumber = driver.findElement(inputPhoneNumberValidate);
         WebElement inputPassword = driver.findElement(inputPasswordValidate);
 
-        softAssertValidationInputs.assertEquals(inputFirstName.getText(),inputFirstNameEmpyMessage);
-        softAssertValidationInputs.assertEquals(inputLastName.getText(),inputLastNameEmpyMessage);
-        softAssertValidationInputs.assertEquals(inputEmail.getText(),inputEmailEmpyMessage);
-        softAssertValidationInputs.assertEquals(inputPhoneNumber.getText(),inputTelephoneEmpyMessage);
-        softAssertValidationInputs.assertEquals(inputPassword.getText(),inputPasswordEmpyMessage);
+        softAssertValidationInputs.assertEquals(inputFirstName.getText(),inputFirstNameEmpyMessage,"Valida mensaje campo First Name obligatorio");
+        softAssertValidationInputs.assertEquals(inputLastName.getText(),inputLastNameEmpyMessage,"Valida mensaje campo Last Name obligatorio");
+        softAssertValidationInputs.assertEquals(inputEmail.getText(),inputEmailEmpyMessage,"Valida mensaje campo Email obligatorio");
+        softAssertValidationInputs.assertEquals(inputPhoneNumber.getText(),inputTelephoneEmpyMessage,"Valida mensaje campo Phone Number obligatorio");
+        softAssertValidationInputs.assertEquals(inputPassword.getText(),inputPasswordEmpyMessage,"Valida mensaje campo Password obligatorio");
         softAssertValidationInputs.assertAll();
     }
 

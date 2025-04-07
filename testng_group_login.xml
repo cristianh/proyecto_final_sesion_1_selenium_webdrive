@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+    <suite name="Suite Regression">
+        <test name="Test Login page">
+            <groups>
+                <run>
+                    <include name="Functional"></include>
+                </run>
+            </groups>
+            <classes>
+                <class name="io.demo.evershop.test.LoginTest">
+                </class>
+            </classes>
+        </test>
+</suite>
