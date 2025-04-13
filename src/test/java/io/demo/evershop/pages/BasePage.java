@@ -26,8 +26,6 @@ public class BasePage extends BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIME_OUT));
         // Crear una espera explícita
         waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
-        //Abrimos la URL
-        driver.get(urlBase);
     }
 
     public WebElement find(By element) {
@@ -43,6 +41,7 @@ public class BasePage extends BaseTest {
     }
 
     public void type(By element, String text) {
+        find(element).clear();
         find(element).sendKeys(text);
     }
 
@@ -61,7 +60,6 @@ public class BasePage extends BaseTest {
 
     public boolean isDisplayText(By locator,String text){
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT));
             wait.until(ExpectedConditions.invisibilityOfElementWithText(locator,text));
             return true;
         } catch (Exception e) {

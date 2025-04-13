@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-    <suite name="Suite Funtional"  parallel="methods" thread-count="5">
-        <test name="Test Register page">
+<suite name="Suite Funtional"  >
+        <test thread-count="5" name="Test Register page">
             <groups>
                 <run>
                     <include name="Functional"></include>
                 </run>
             </groups>
             <classes>
-                <class name="io.demo.evershop.test.RegisterTest">
-                </class>
+                <class name="io.demo.evershop.test.RegisterTest"></class>
             </classes>
         </test>
 </suite>

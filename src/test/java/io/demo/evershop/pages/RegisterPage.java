@@ -1,8 +1,14 @@
 package io.demo.evershop.pages;
 
+import com.demo.nopcommerce.models.User;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
 
-public class RegisterPage {
+public class RegisterPage extends BasePage{
+
+
     //Locators
     public static By inputFirstName = By.cssSelector("#input-firstname");
     public static By inputLastName =  By.cssSelector("#input-lastname");
@@ -37,5 +43,38 @@ public class RegisterPage {
     public static String textValidatePasswordConfim = "Password confirmation does not match password!";
     public static String textValidateEmailExiting = "Warning: E-Mail Address is already registered!";
 
+    //Mensaje alert
+    public static By textValidateMessageAlert=  By.cssSelector(".alert");
+    public static By textValidateRegisterSuccess=  By.cssSelector("#content p:first-of-type");
+
+
+
+    public RegisterPage(WebDriver driver) {
+        super(driver);
+        //visit(urlBase);
+    }
+
+    public void fillFormRegister(User userlogin){
+        //Address data
+        //WebElement selectCountry = driver.findElement(By.cssSelector("select[name='countryListboxRegisterPage']"));
+        type(inputFirstName,userlogin.getFirstName());
+        type(inputLastName,userlogin.getLastName());
+        type(inputEmail,userlogin.getEmail());
+        type(inputPhoneNumber,userlogin.getTelephone());
+        type(inputPassword,userlogin.getPassword());
+        type(inputConfirmPassword,userlogin.getPasswordconfirm());
+    }
+
+    public void clickRadioButtonSuscribe(){
+        click(inputRadioSuscribe);
+    }
+
+    public void clickCheckBoxPrivacite(){
+        click(inputChechBoxPrivacyPo);
+    }
+
+    public void clickButtonSubmit(){
+        click(btnRegister);
+    }
 
 }
