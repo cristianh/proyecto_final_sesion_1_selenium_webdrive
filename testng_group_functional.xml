@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite Funtional">
+<suite name="Suite Functional">
         <test thread-count="5" name="Test Login page">
             <groups>
                 <run>
                     <include name="Functional"></include>
-                    <include name="Integration"></include>
                 </run>
             </groups>
             <classes>
+                <class name="io.demo.evershop.test.RegisterTest"></class>
                 <class name="io.demo.evershop.test.LoginTest"></class>
+                <class name="io.demo.evershop.test.OrdersTest"></class>
             </classes>
         </test>
 </suite>

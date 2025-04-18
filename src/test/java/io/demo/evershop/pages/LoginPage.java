@@ -9,6 +9,11 @@ import static io.demo.evershop.Variables.urlBaseLogin;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class LoginPage extends BasePage {
+
+    //Locators
+    public static By btnMenuAccount = By.cssSelector("a[title='My Account']");
+    public static By btnMenuAccountLogin = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
+    public static By btnMenuAccountOut = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
     public static By inputEmail = By.cssSelector("#input-email");
     public static By inputPassword =  By.cssSelector("#input-password");
     public static By btnLogin = By.cssSelector("input[type='submit']");
@@ -43,6 +48,17 @@ public class LoginPage extends BasePage {
         newUser.setPassword("@9Pb$XJV&k");
         type(inputEmail,newUser.getEmail());
         type(inputPassword,newUser.getPassword());;
+    }
+
+    public void clickMyAccount(){
+        click(btnMenuAccount);
+    }
+    public void clickMyAccountLogin(){
+        click(btnMenuAccountLogin);
+    }
+
+    public void clickMyAccountOut(){
+        click(btnMenuAccountOut);
     }
 
 

@@ -10,6 +10,9 @@ public class RegisterPage extends BasePage{
 
 
     //Locators
+    public static By btnMenuAccount = By.cssSelector("a[title='My Account']");
+    public static By btnMenuAccountRegister = By.cssSelector("a[title='My Account'] +ul >li:first-child a");
+    public static By btnMenuAccountOut = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
     public static By inputFirstName = By.cssSelector("#input-firstname");
     public static By inputLastName =  By.cssSelector("#input-lastname");
     public static By inputEmail = By.cssSelector("#input-email");
@@ -51,6 +54,7 @@ public class RegisterPage extends BasePage{
 
     public RegisterPage(WebDriver driver) {
         super(driver);
+        System.out.println("Pasa por aqui");
         //visit(urlBase);
     }
 
@@ -63,6 +67,18 @@ public class RegisterPage extends BasePage{
         type(inputPhoneNumber,userlogin.getTelephone());
         type(inputPassword,userlogin.getPassword());
         type(inputConfirmPassword,userlogin.getPasswordconfirm());
+    }
+
+    public void clickMyAccount(){
+        click(btnMenuAccount);
+    }
+
+    public void clickMyAccountRegister(){
+        click(btnMenuAccountRegister);
+    }
+
+    public void clickMyAccountOut(){
+        click(btnMenuAccountOut);
     }
 
     public void clickRadioButtonSuscribe(){

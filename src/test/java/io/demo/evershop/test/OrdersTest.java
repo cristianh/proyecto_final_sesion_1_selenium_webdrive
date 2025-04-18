@@ -10,6 +10,8 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-01 - Añadir productos al carrito", groups = {"Regression"})
     public void orderAddCardProductTest() {
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountLogin();
         loginpage.fillFormLogin();
         loginpage.clickButtonSubmit();
         loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
@@ -27,6 +29,8 @@ public class OrdersTest extends BaseTest {
         orderpage.validateMessage(titlePageShopping, textValidatePageShopping);
         orderpage.validateDeleteItemCardShopping();
         orderpage.validateMessage(messagePageShoppingEmpty, textValidateEmpyProductShopping);
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountOut();
     }
 
     @Test(description = "TC-Order-03 - Modificar cantidad de productos en el carrito", dependsOnMethods = "orderAddCardProductTest", groups = {"Functional"})
@@ -37,6 +41,8 @@ public class OrdersTest extends BaseTest {
         orderpage.validateUpdateItemCardShopping();
         orderpage.validateMessage(messageSuccessUpdate, textValidateUpdayeQyProductShopping);
         orderpage.clickHome();
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountOut();
     }
 
     @Test(description = "TC-Order-04 - Creación de orden exitosa ", groups = {"Regression"})
@@ -74,5 +80,7 @@ public class OrdersTest extends BaseTest {
         orderpage.clickConfirmOrder();
         orderpage.validateMessageSuccessOrder();
         orderpage.clickBtnConfirmReturnHome();
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountOut();
     }
 }
