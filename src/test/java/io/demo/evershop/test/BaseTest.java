@@ -7,6 +7,7 @@ import io.demo.evershop.pages.ForgotPage;
 import io.demo.evershop.pages.LoginPage;
 import io.demo.evershop.pages.OrdersPage;
 import io.demo.evershop.pages.RegisterPage;
+import io.demo.evershop.utils.Reports;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -14,10 +15,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
@@ -43,9 +41,18 @@ public class BaseTest {
     protected RegisterPage registerpage;
     protected OrdersPage orderpage;
 
+    //Reports
+    public Reports reportsOut;
+
     //Assert Soft
     public SoftAssert softAssertValidationInputs = new SoftAssert();
 
+    @BeforeSuite
+    public  void setupReport(){
+        reportsOut= new Reports();
+        reportsOut.initReport();
+
+    }
 
     @BeforeClass(alwaysRun = true)
     public void setup(){
@@ -65,9 +72,10 @@ public class BaseTest {
 
         Capabilities capabilities = ((RemoteWebDriver)driver).getCapabilities();
 
-        System.out.println("Browser Name: " + capabilities.getBrowserName() );
-        System.out.println("Browser Version: " + capabilities.getBrowserVersion() );
-        System.out.println("Plataform Name: " + capabilities.getPlatformName());
+
+        //Config reports
+        reportsOut.configReport(capabilities);
+        reportsOut.runReports();
 
         //Instanciamos los actions
         actions= new Actions(driver);
@@ -87,11 +95,18 @@ public class BaseTest {
     }
 
 
+
+
     @AfterClass(alwaysRun = true)
     public void tearDown(){
         if(driver != null){
             //cerramos la sesion
-            //driver.close();
+            driver.close();
         }
+    }
+
+    @AfterSuite
+    public void methodName() {
+        reportsOut.clearReport();
     }
 }

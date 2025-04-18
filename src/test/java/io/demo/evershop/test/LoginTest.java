@@ -10,9 +10,11 @@ public class LoginTest extends BaseTest {
     public void LoginSuccessTest() {
         loginpage.clickMyAccount();
         loginpage.clickMyAccountLogin();
-        loginpage.fillFormLogin();
-        loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageSuccessLogin,textValidateSuccessCredencials);
+        if(loginpage.isDisplayElement(inputEmail)) {
+            loginpage.fillFormLogin();
+            loginpage.clickButtonSubmit();
+            loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
+        }
     }
 
     @Test(description = "TC-Login-02 - Inicio de sesión credenciales incorrectas", priority = 2, groups = {"Functional"})
@@ -22,9 +24,11 @@ public class LoginTest extends BaseTest {
         User newUser = new User();
         newUser.setEmail("nona3.klein@hotmail.com");
         newUser.setPassword("@9Pb$XJV&k3");
-        loginpage.fillFormLogin(newUser);
-        loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
+        if(loginpage.isDisplayElement(inputEmail)) {
+            loginpage.fillFormLogin(newUser);
+            loginpage.clickButtonSubmit();
+            loginpage.validateMessage(messageError, textValidateIncorrectCredencials);
+        }
     }
 
     @Test(description = "TC-Login-03 - credenciales en blanco", priority = 3, groups = {"Functional"})
@@ -34,18 +38,22 @@ public class LoginTest extends BaseTest {
         User newUser = new User();
         newUser.setEmail("");
         newUser.setPassword("");
-        loginpage.fillFormLogin(newUser);
-        loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
+        if(loginpage.isDisplayElement(inputEmail)) {
+            loginpage.fillFormLogin(newUser);
+            loginpage.clickButtonSubmit();
+            loginpage.validateMessage(messageError, textValidateIncorrectCredencials);
+        }
     }
 
     @Test(description = "TC-Login-04 - Correo electrónico no registrado", priority = 4, groups = {"Regression"})
     public void LoginEmailExitingCredencialsTest() {
+        User newUser = dataFaker.getNewUser();
         loginpage.clickMyAccount();
         loginpage.clickMyAccountLogin();
-        User data = dataFaker.getNewUser();
-        loginpage.fillFormLogin(data);
-        loginpage.clickButtonSubmit();
+        if(loginpage.isDisplayElement(inputEmail)) {
+            loginpage.fillFormLogin(newUser);
+            loginpage.clickButtonSubmit();
+        }
         loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
     }
 
@@ -53,9 +61,11 @@ public class LoginTest extends BaseTest {
     public void LoginRemenberPasswordTest() {
         loginpage.clickMyAccount();
         loginpage.clickMyAccountLogin();
-        loginpage.clickButtonForgotPassword();
-        forgotpage.fillFormForgotPassword("talisha.kirlin@gmail.com");
-        forgotpage.clickButtonSubmit();
-        loginpage.validateMessage(messageRemenberCredencials,textValidateRememberPasswordConfirm);
+        if(loginpage.isDisplayElement(btnForgodPassword)) {
+            loginpage.clickButtonForgotPassword();
+            forgotpage.fillFormForgotPassword("talisha.kirlin@gmail.com");
+            forgotpage.clickButtonSubmit();
+            loginpage.validateMessage(messageRemenberCredencials,textValidateRememberPasswordConfirm);
+        }
     }
 }

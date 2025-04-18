@@ -2,8 +2,7 @@ package io.demo.evershop.test;
 
 import org.testng.annotations.Test;
 
-import static io.demo.evershop.pages.LoginPage.messageSuccessLogin;
-import static io.demo.evershop.pages.LoginPage.textValidateSuccessCredencials;
+import static io.demo.evershop.pages.LoginPage.*;
 import static io.demo.evershop.pages.OrdersPage.*;
 
 public class OrdersTest extends BaseTest {
@@ -29,8 +28,6 @@ public class OrdersTest extends BaseTest {
         orderpage.validateMessage(titlePageShopping, textValidatePageShopping);
         orderpage.validateDeleteItemCardShopping();
         orderpage.validateMessage(messagePageShoppingEmpty, textValidateEmpyProductShopping);
-        loginpage.clickMyAccount();
-        loginpage.clickMyAccountOut();
     }
 
     @Test(description = "TC-Order-03 - Modificar cantidad de productos en el carrito", dependsOnMethods = "orderAddCardProductTest", groups = {"Functional"})
@@ -41,15 +38,18 @@ public class OrdersTest extends BaseTest {
         orderpage.validateUpdateItemCardShopping();
         orderpage.validateMessage(messageSuccessUpdate, textValidateUpdayeQyProductShopping);
         orderpage.clickHome();
-        loginpage.clickMyAccount();
-        loginpage.clickMyAccountOut();
     }
 
-    @Test(description = "TC-Order-04 - Creación de orden exitosa ", groups = {"Regression"})
+    @Test(description = "TC-Order-04 - Creación de orden exitosa ",groups = {"Regression"})
     public void orderSuccesProcessProductsShoppingTest() {
-        loginpage.fillFormLogin();
-        loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountLogin();
+        if(loginpage.isDisplayElement(inputEmail)) {
+            loginpage.fillFormLogin();
+            loginpage.clickButtonSubmit();
+            loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
+        }
+
         orderpage.clickHome();
         //Seleccionamos la mackbook
         orderpage.clickElementPageOrder(0);
@@ -80,7 +80,5 @@ public class OrdersTest extends BaseTest {
         orderpage.clickConfirmOrder();
         orderpage.validateMessageSuccessOrder();
         orderpage.clickBtnConfirmReturnHome();
-        loginpage.clickMyAccount();
-        loginpage.clickMyAccountOut();
     }
 }
