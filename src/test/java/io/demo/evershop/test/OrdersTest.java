@@ -9,6 +9,7 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-01 - Añadir productos al carrito", groups = {"Regression"})
     public void orderAddCardProductTest() {
+        reportsOut.configReport(capabilities,"Añadir productos al carrito","Test Orders Page product add cart");
         loginpage.clickMyAccount();
         loginpage.clickMyAccountLogin();
         loginpage.fillFormLogin();
@@ -23,6 +24,7 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-02 - Eliminar productos del carrito", dependsOnMethods = "orderAddCardProductTest", groups = {"Regression"})
     public void orderDeleteCardProductTest() {
+        reportsOut.configReport(capabilities,"Eliminar productos del carrito","Test Orders Page product remove cart");
         orderpage.clickCardViewShopping();
         orderpage.clickViewCardShoppingPage();
         orderpage.validateMessage(titlePageShopping, textValidatePageShopping);
@@ -32,6 +34,7 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-03 - Modificar cantidad de productos en el carrito", dependsOnMethods = "orderAddCardProductTest", groups = {"Functional"})
     public void orderCountProductsShoppingTest() {
+        reportsOut.configReport(capabilities,"Modificar cantidad de productos en el carrito","Test Orders Page Modify the quantity of products in the cart");
         orderpage.clickCardViewShopping();
         orderpage.clickViewCardShoppingPage();
         orderpage.fillUpdateQyItem();
@@ -42,6 +45,7 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-04 - Creación de orden exitosa ",groups = {"Regression"})
     public void orderSuccesProcessProductsShoppingTest() {
+        reportsOut.configReport(capabilities,"Creación de orden exitosa","Test Orders Page Success order");
         loginpage.clickMyAccount();
         loginpage.clickMyAccountLogin();
         if(loginpage.isDisplayElement(inputEmail)) {

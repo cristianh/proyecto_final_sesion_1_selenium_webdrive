@@ -6,22 +6,32 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import org.openqa.selenium.Capabilities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Reports {
 
-    protected ExtentSparkReporter extentSparkReporter;
-    protected ExtentReports extentReports;
-    protected ExtentTest extentTest;
+    public ExtentSparkReporter extentSparkReporter;
+    public ExtentReports extentReports;
+    public ExtentTest extentTest;
+    public String nombreFile = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
     public void initReport(){
-        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/Reports/index_report.html");
+        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/Reports/" + nombreFile + "index_report.html");
+        extentSparkReporter.config().setTheme(Theme.STANDARD);
+        extentSparkReporter.config().setDocumentTitle("QA Report Page");
     }
 
-    public void configReport(Capabilities dataCapabilities){
+    public void configReport(Capabilities dataCapabilities,String descriptionTest,String nameTest){
         System.out.println("Browser Name: " + dataCapabilities.getBrowserName() );
         System.out.println("Browser Version: " + dataCapabilities.getBrowserVersion() );
         System.out.println("Plataform Name: " + dataCapabilities.getPlatformName());
-        extentSparkReporter.config().setTheme(Theme.STANDARD);
-        extentSparkReporter.config().setDocumentTitle("QA Report Page");
+        extentTest = extentReports.createTest(descriptionTest,nameTest);
+        extentTest.assignAuthor("Pruebas QA");
+        //extentTest.assignDevice(dataCapabilities.getPlatformName().toString().toLowerCase());
+        extentTest.info("Browser Name: " + dataCapabilities.getBrowserName());
+        extentTest.info("Browser Version: " + dataCapabilities.getBrowserVersion());
+        extentTest.info("Platform Name: " + dataCapabilities.getPlatformName());
     }
 
     public void runReports(){

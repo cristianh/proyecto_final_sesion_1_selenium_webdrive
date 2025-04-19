@@ -14,6 +14,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "TC-Register-01 - Registro exitoso", priority = 1, groups = {"Functional"})
     public void registerSuccessTest() {
+        reportsOut.configReport(capabilities,"Registro exitoso","Test Register Page Sucess");
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
         registerpage.clickMyAccountRegister();
@@ -31,6 +32,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "TC-Register-02 - registro con campos obligatorios faltantes", priority = 2, groups = {"Functional","Integration"})
     public void registerInputRequiredTest() {
+        reportsOut.configReport(capabilities,"Registro con campos obligatorios faltantes","Test Register Page required inputs");
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
         registerpage.clickMyAccountRegister();
@@ -51,6 +53,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "TC-Register-03 - correo formato invalido o incorrecto", priority = 3, groups = {"Functional","Regression"})
     public void registerEmailNotValidateTest() {
+        reportsOut.configReport(capabilities,"Correo formato invalido o incorrecto","Test Register Page email bad format");
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
         registerpage.clickMyAccountRegister();
@@ -74,6 +77,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "TC-Register-05 - Confirmación de contraseña",priority = 4, groups = {"Functional","Integration"})
     public void registerPasswordConfimTest() {
+        reportsOut.configReport(capabilities,"Confirmación de contraseña","Test Register Page confirm password");
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
         registerpage.clickMyAccountRegister();
@@ -95,6 +99,7 @@ public class RegisterTest extends BaseTest {
 
     @Test(description = "TC-Register-06 - Correo electrónico único",priority = 4, groups = {"Functional","Integration"})
     public void registerValidateUniqueEmailTest() {
+        reportsOut.configReport(capabilities,"Correo electrónico único","Test Register Page email uniqued");
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
         registerpage.clickMyAccountRegister();

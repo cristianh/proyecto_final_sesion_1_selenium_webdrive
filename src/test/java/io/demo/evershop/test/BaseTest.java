@@ -12,13 +12,11 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 
 import static io.demo.evershop.Variables.*;
 
@@ -29,7 +27,7 @@ public class BaseTest {
 
     //Paso 1: declarar las variables que utilizaremos.
     public WebDriver driver;
-    public Actions actions;
+
 
     // Crear una espera explícita
     public WebDriverWait waitExplicit;
@@ -43,15 +41,17 @@ public class BaseTest {
 
     //Reports
     public Reports reportsOut;
+    public static  Capabilities capabilities;
 
     //Assert Soft
     public SoftAssert softAssertValidationInputs = new SoftAssert();
 
-    @BeforeSuite
+    @BeforeSuite(alwaysRun = true)
     public  void setupReport(){
         reportsOut= new Reports();
         reportsOut.initReport();
-
+        //Config reports
+        reportsOut.runReports();
     }
 
     @BeforeClass(alwaysRun = true)
@@ -70,20 +70,11 @@ public class BaseTest {
         // instanciamos el navegador a utilizar.
         driver = new FirefoxDriver(options);
 
-        Capabilities capabilities = ((RemoteWebDriver)driver).getCapabilities();
+        capabilities = ((RemoteWebDriver)driver).getCapabilities();
 
-
-        //Config reports
-        reportsOut.configReport(capabilities);
-        reportsOut.runReports();
-
-        //Instanciamos los actions
-        actions= new Actions(driver);
         //indicamos la configuración del navegador ( abrimos en modo maximizado)
         driver.manage().window().maximize();
         //Abrimos la URL
-        //driver.get(urlBaseRegister);
-        //driver.get(urlBaseLogin);
         driver.get(urlBaseHome);
         //Cargamos la data fake para las pruebas
         dataFaker.dataUser();
@@ -97,7 +88,7 @@ public class BaseTest {
 
 
 
-    @AfterClass(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void tearDown(){
         if(driver != null){
             //cerramos la sesion
@@ -105,7 +96,7 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void methodName() {
         reportsOut.clearReport();
     }
