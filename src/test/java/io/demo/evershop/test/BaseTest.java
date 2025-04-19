@@ -74,8 +74,6 @@ public class BaseTest {
         //indicamos la configuración del navegador ( abrimos en modo maximizado)
         driver.manage().window().maximize();
         //Abrimos la URL
-        //driver.get(urlBaseRegister);
-        //driver.get(urlBaseLogin);
         driver.get(urlBaseHome);
         //Cargamos la data fake para las pruebas
         dataFaker.dataUser();
