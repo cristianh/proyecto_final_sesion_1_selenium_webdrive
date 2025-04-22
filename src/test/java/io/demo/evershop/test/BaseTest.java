@@ -3,10 +3,7 @@ package io.demo.evershop.test;
 import com.github.javafaker.Faker;
 import io.demo.evershop.DataFacker;
 import io.demo.evershop.Variables;
-import io.demo.evershop.pages.ForgotPage;
-import io.demo.evershop.pages.LoginPage;
-import io.demo.evershop.pages.OrdersPage;
-import io.demo.evershop.pages.RegisterPage;
+import io.demo.evershop.pages.*;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -42,6 +39,7 @@ public class BaseTest {
     protected ForgotPage forgotpage;
     protected RegisterPage registerpage;
     protected OrdersPage orderpage;
+    protected CheckoutPage checkoutpage;
 
     //Assert Soft
     public SoftAssert softAssertValidationInputs = new SoftAssert();
@@ -53,10 +51,8 @@ public class BaseTest {
         FirefoxOptions options = new FirefoxOptions();
 
         // 🔐 Configuraciones de seguridad directamente
-        options.addPreference("security.mixed_content.block_active_content", false);
-        options.addPreference("security.mixed_content.block_display_content", false);
-        options.addPreference("webdriver_accept_untrusted_certs", true);
-        options.addPreference("webdriver_assume_untrusted_issuer", false);
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--allow-insecure-localhost");
         //options.addArguments("--headless");
         options.addArguments("-save-mode");
         //Paso 2: instanciar las variables
@@ -82,6 +78,7 @@ public class BaseTest {
         forgotpage = new ForgotPage(driver);
         registerpage = new RegisterPage(driver);
         orderpage = new OrdersPage(driver);
+        checkoutpage = new CheckoutPage(driver);
     }
 
 

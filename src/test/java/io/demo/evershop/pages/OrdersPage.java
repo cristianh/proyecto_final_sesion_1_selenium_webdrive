@@ -31,34 +31,16 @@ public class OrdersPage extends BasePage {
     public static By titlePageShopping = By.cssSelector("h1");
     public static By messagePageShoppingEmpty = By.cssSelector("#content p");
     public static By messageSuccessUpdate = By.cssSelector(".alert");
-    public static By messageConfirmOrder = By.cssSelector("#content h1");
     public static By inputQyItemProductShoppingPage = By.cssSelector("input[type='text'][value='1']");
 
     public List<WebElement> cardProductsElement;
 
-    //formulario pedido:
-    public static By radioNewAddress = By.cssSelector("input[value='new']");
-    public static By inputFirstName = By.cssSelector("#input-payment-firstname");
-    public static By inputLastName = By.cssSelector("#input-payment-lastname");
-    public static By inputCompany = By.cssSelector("#input-payment-company");
-    public static By inputAddress = By.cssSelector("#input-payment-address-1");
-    public static By inputCity = By.cssSelector("#input-payment-city");
-    public static By inputSelectCountry = By.cssSelector("#input-payment-country");
-    public static By inputSelectCountryZone = By.cssSelector("#input-payment-zone");
-    public static By btnPaymentAddress = By.cssSelector("#button-payment-address");
-    public static By btnShippingAddress = By.cssSelector("#button-shipping-address");
-    public static By btnShippingMethod = By.cssSelector("#button-shipping-method");
-    public static By btnPayMethod = By.cssSelector("#button-payment-method");
-    public static By btnConfirmOrder = By.cssSelector("#button-confirm");
-    public static By selectDeliveryDetails = By.cssSelector("#shipping-existing select[name='address_id']");
-    public static By textAreaDeliveryMethod = By.cssSelector("textarea[name='comment']");
-    public static By inputChechBoxPrivacyPo = By.cssSelector("input[type='checkbox'][name='agree']");
+
 
     public static String textValidateProductShoppingCard = "Success: You have added Canon EOS 5D to your shopping cart!";
     public static String textValidatePageShopping = "Your Store";
     public static String textValidateEmpyProductShopping = "Your shopping cart is empty!";
     public static String textValidateUpdayeQyProductShopping = "Success: You have modified your shopping cart!";
-    public static String textValidateMessague= "Your order has been placed!";
 
 
     protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
@@ -97,61 +79,6 @@ public class OrdersPage extends BasePage {
         }
     }
 
-    public void selectRadioNewAddress() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(radioNewAddress));
-        click(radioNewAddress);
-    }
-
-    public void fillFormOrderProcess() {
-        type(inputFirstName, "Pedro");
-        type(inputLastName, "Sanchez");
-        type(inputCompany, "SQA.SAS");
-        type(inputAddress, "Barrio las Acacias M 2 # 12");
-        type(inputCity, "Armenia");
-        type(inputCity, "Armenia");
-    }
-
-
-    public void selectCountry() {
-        WebElement selectCountry = find(inputSelectCountry);
-        Select selectInputCountry = new Select(selectCountry);
-        selectInputCountry.selectByVisibleText("Colombia");
-    }
-
-    public void selectCountryZone() {
-        WebElement selectZone = find(inputSelectCountryZone);
-        selectZone.click();
-        Select selectInputZone = new Select(selectZone);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(inputSelectCountryZone));
-        selectInputZone.selectByVisibleText("Quindio");
-    }
-
-    public void selectDeliveryDetails() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(selectDeliveryDetails));
-        WebElement inputDeliveryDetails = find(selectDeliveryDetails);
-        inputDeliveryDetails.click();
-        Select selectDeliveryDetails = new Select(inputDeliveryDetails);
-        selectDeliveryDetails.selectByIndex(1);
-    }
-
-    public void textAreaDeliveryMethod(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(textAreaDeliveryMethod));
-        type(textAreaDeliveryMethod,"NA");
-    }
-
-    public void clickDeliveyDetails() {
-        click(btnShippingAddress);
-    }
-
-    public void clickDeliveryMethod() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(btnShippingMethod));
-        click(btnShippingMethod);
-    }
-
-    public void clickContinueAddress() {
-        click(btnPaymentAddress);
-    }
-
     public void clickAddCardItem() {
         click(btnCardShopping);
     }
@@ -162,11 +89,6 @@ public class OrdersPage extends BasePage {
 
     public void clickViewCardShoppingPage() {
         click(btnViewCardShoppingPage);
-    }
-
-    public void clickCheckBoxPrivacite(){
-        wait.until(ExpectedConditions.visibilityOfElementLocated(inputChechBoxPrivacyPo));
-        click(inputChechBoxPrivacyPo);
     }
 
     public void clickViewCheckoutPage() {
@@ -181,14 +103,7 @@ public class OrdersPage extends BasePage {
         click(btnUpdateProduct);
     }
 
-    public void clickPayMenthod(){
-        click(btnPayMethod);
-    }
 
-    public void clickConfirmOrder() {
-        wait.until(ExpectedConditions.visibilityOfElementLocated(btnConfirmOrder));
-        click(btnConfirmOrder);
-    }
 
     public void clickBtnConfirmReturnHome(){
         wait.until(ExpectedConditions.visibilityOfElementLocated(btnContinueReturnHome));
@@ -216,8 +131,4 @@ public class OrdersPage extends BasePage {
         }
     }
 
-    public void validateMessageSuccessOrder(){
-        if (isDisplayElement(messageConfirmOrder))
-            assertEquals(getText(messageConfirmOrder), textValidateMessague);
-    }
 }

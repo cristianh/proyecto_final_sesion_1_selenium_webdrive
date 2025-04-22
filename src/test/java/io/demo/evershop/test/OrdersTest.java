@@ -1,5 +1,6 @@
 package io.demo.evershop.test;
 
+import io.demo.evershop.pages.CheckoutPage;
 import org.testng.annotations.Test;
 
 import static io.demo.evershop.pages.LoginPage.messageSuccessLogin;
@@ -47,6 +48,8 @@ public class OrdersTest extends BaseTest {
 
     @Test(description = "TC-Order-04 - Creación de orden exitosa ", groups = {"Regression"})
     public void orderSuccesProcessProductsShoppingTest() {
+        loginpage.clickMyAccount();
+        loginpage.clickMyAccountLogin();
         loginpage.fillFormLogin();
         loginpage.clickButtonSubmit();
         loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
@@ -66,19 +69,21 @@ public class OrdersTest extends BaseTest {
         orderpage.clickHome();
         orderpage.clickCardViewShopping();
         orderpage.clickViewCheckoutPage();
-        orderpage.selectRadioNewAddress();
-        orderpage.fillFormOrderProcess();
-        orderpage.selectCountry();
-        orderpage.selectCountryZone();
-        orderpage.clickContinueAddress();
-        orderpage.selectDeliveryDetails();
-        orderpage.clickDeliveyDetails();
-        orderpage.textAreaDeliveryMethod();
-        orderpage.clickDeliveryMethod();
-        orderpage.clickCheckBoxPrivacite();
-        orderpage.clickPayMenthod();
-        orderpage.clickConfirmOrder();
-        orderpage.validateMessageSuccessOrder();
+        //LLenamos el formulario de pedido
+        checkoutpage.selectRadioNewAddress();
+        checkoutpage.fillFormOrderProcess();
+        checkoutpage.selectCountry();
+        checkoutpage.selectCountryZone();
+        checkoutpage.clickContinueAddress();
+        checkoutpage.selectDeliveryDetails();
+        checkoutpage.clickDeliveyDetails();
+        checkoutpage.textAreaDeliveryMethod();
+        checkoutpage.clickDeliveryMethod();
+        checkoutpage.clickCheckBoxPrivacite();
+        checkoutpage.clickPayMenthod();
+        checkoutpage.clickConfirmOrder();
+        //Validamos el mensaje de orden
+        checkoutpage.validateMessageSuccessOrder();
         orderpage.clickBtnConfirmReturnHome();
         loginpage.clickMyAccount();
         loginpage.clickMyAccountOut();
