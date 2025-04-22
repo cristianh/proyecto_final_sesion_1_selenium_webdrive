@@ -3,9 +3,6 @@ package io.demo.evershop.pages;
 import com.demo.nopcommerce.models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import static io.demo.evershop.Variables.urlBaseLogin;
 import static org.testng.AssertJUnit.assertEquals;
 
 public class LoginPage extends BasePage {

@@ -17,12 +17,14 @@ public class Reports {
     public String nombreFile = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
     public void initReport(){
-        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/Reports/" + nombreFile + "index_report.html");
+        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/Reports/" + nombreFile + "_index_report.html");
         extentSparkReporter.config().setTheme(Theme.STANDARD);
         extentSparkReporter.config().setDocumentTitle("QA Report Page");
+
     }
 
     public void configReport(Capabilities dataCapabilities,String descriptionTest,String nameTest){
+
         System.out.println("Browser Name: " + dataCapabilities.getBrowserName() );
         System.out.println("Browser Version: " + dataCapabilities.getBrowserVersion() );
         System.out.println("Plataform Name: " + dataCapabilities.getPlatformName());
@@ -34,7 +36,7 @@ public class Reports {
         extentTest.info("Platform Name: " + dataCapabilities.getPlatformName());
     }
 
-    public void runReports(){
+    public void runConfig(){
         extentReports = new ExtentReports();
         extentReports.attachReporter(extentSparkReporter);
     }

@@ -25,7 +25,7 @@ public class BasePage extends BaseTest {
         //Especificamo un tiempo de espera a que los elementos esten presentes en la pagina
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIME_OUT));
         // Crear una espera explícita
-        waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
+        //waitExplicit = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
     }
 
     public WebElement find(By element) {

@@ -46,24 +46,21 @@ public class BaseTest {
     //Assert Soft
     public SoftAssert softAssertValidationInputs = new SoftAssert();
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeSuite()
     public  void setupReport(){
         reportsOut= new Reports();
         reportsOut.initReport();
-        //Config reports
-        reportsOut.runReports();
+
     }
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeTest()
     public void setup(){
         // Crear opciones de Firefox
         FirefoxOptions options = new FirefoxOptions();
 
         // 🔐 Configuraciones de seguridad directamente
-        options.addPreference("security.mixed_content.block_active_content", false);
-        options.addPreference("security.mixed_content.block_display_content", false);
-        options.addPreference("webdriver_accept_untrusted_certs", true);
-        options.addPreference("webdriver_assume_untrusted_issuer", false);
+        options.addArguments("--ignore-certificate-errors");
+        options.addArguments("--allow-insecure-localhost");
         //options.addArguments("--headless");
         options.addArguments("-save-mode");
         //Paso 2: instanciar las variables
@@ -71,6 +68,9 @@ public class BaseTest {
         driver = new FirefoxDriver(options);
 
         capabilities = ((RemoteWebDriver)driver).getCapabilities();
+
+
+        reportsOut.runConfig();
 
         //indicamos la configuración del navegador ( abrimos en modo maximizado)
         driver.manage().window().maximize();
@@ -88,15 +88,16 @@ public class BaseTest {
 
 
 
-    @BeforeClass(alwaysRun = true)
+    @AfterTest()
     public void tearDown(){
         if(driver != null){
+            System.out.println("Se cierra la sesion");
             //cerramos la sesion
             driver.close();
         }
     }
 
-    @AfterSuite(alwaysRun = true)
+    @AfterSuite()
     public void methodName() {
         reportsOut.clearReport();
     }
