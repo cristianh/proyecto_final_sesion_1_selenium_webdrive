@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.asserts.SoftAssert;
 
-public class RegisterPage extends BasePage{
+public class RegisterPage extends BasePage {
 
 
     //Locators
@@ -14,7 +14,7 @@ public class RegisterPage extends BasePage{
     public static By btnMenuAccountRegister = By.cssSelector("a[title='My Account'] +ul >li:first-child a");
     public static By btnMenuAccountOut = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
     public static By inputFirstName = By.cssSelector("#input-firstname");
-    public static By inputLastName =  By.cssSelector("#input-lastname");
+    public static By inputLastName = By.cssSelector("#input-lastname");
     public static By inputEmail = By.cssSelector("#input-email");
     public static By inputPhoneNumber = By.cssSelector("#input-telephone");
     public static By inputPassword = By.cssSelector("#input-password");
@@ -25,7 +25,7 @@ public class RegisterPage extends BasePage{
 
     //Message Validation inputs error
     public static By inputFirstNameValidate = By.cssSelector("#input-firstname + div");
-    public static By inputLastNameValidate =  By.cssSelector("#input-lastname + div");
+    public static By inputLastNameValidate = By.cssSelector("#input-lastname + div");
     public static By inputEmailValidate = By.cssSelector("#input-email + div");
     public static By inputPhoneNumberValidate = By.cssSelector("#input-telephone + div");
     public static By inputPasswordValidate = By.cssSelector("#input-password + div");
@@ -47,9 +47,8 @@ public class RegisterPage extends BasePage{
     public static String textValidateEmailExiting = "Warning: E-Mail Address is already registered!";
 
     //Mensaje alert
-    public static By textValidateMessageAlert=  By.cssSelector(".alert");
-    public static By textValidateRegisterSuccess=  By.cssSelector("#content p:first-of-type");
-
+    public static By textValidateMessageAlert = By.cssSelector(".alert");
+    public static By textValidateRegisterSuccess = By.cssSelector("#content p:first-of-type");
 
 
     public RegisterPage(WebDriver driver) {
@@ -58,38 +57,38 @@ public class RegisterPage extends BasePage{
         //visit(urlBase);
     }
 
-    public void fillFormRegister(User userlogin){
+    public void fillFormRegister(User userlogin) {
         //Address data
         //WebElement selectCountry = driver.findElement(By.cssSelector("select[name='countryListboxRegisterPage']"));
-        type(inputFirstName,userlogin.getFirstName());
-        type(inputLastName,userlogin.getLastName());
-        type(inputEmail,userlogin.getEmail());
-        type(inputPhoneNumber,userlogin.getTelephone());
-        type(inputPassword,userlogin.getPassword());
-        type(inputConfirmPassword,userlogin.getPasswordconfirm());
+        type(inputFirstName, userlogin.getFirstName());
+        type(inputLastName, userlogin.getLastName());
+        type(inputEmail, userlogin.getEmail());
+        type(inputPhoneNumber, userlogin.getTelephone());
+        type(inputPassword, userlogin.getPassword());
+        type(inputConfirmPassword, userlogin.getPasswordconfirm());
     }
 
-    public void clickMyAccount(){
+    public void clickMyAccount() {
         click(btnMenuAccount);
     }
 
-    public void clickMyAccountRegister(){
+    public void clickMyAccountRegister() {
         click(btnMenuAccountRegister);
     }
 
-    public void clickMyAccountOut(){
+    public void clickMyAccountOut() {
         click(btnMenuAccountOut);
     }
 
-    public void clickRadioButtonSuscribe(){
+    public void clickRadioButtonSuscribe() {
         click(inputRadioSuscribe);
     }
 
-    public void clickCheckBoxPrivacite(){
+    public void clickCheckBoxPrivacite() {
         click(inputChechBoxPrivacyPo);
     }
 
-    public void clickButtonSubmit(){
+    public void clickButtonSubmit() {
         click(btnRegister);
     }
 

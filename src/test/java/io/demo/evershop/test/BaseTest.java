@@ -41,20 +41,20 @@ public class BaseTest {
 
     //Reports
     public Reports reportsOut;
-    public static  Capabilities capabilities;
+    public static Capabilities capabilities;
 
     //Assert Soft
     public SoftAssert softAssertValidationInputs = new SoftAssert();
 
     @BeforeSuite()
-    public  void setupReport(){
-        reportsOut= new Reports();
+    public void setupReport() {
+        reportsOut = new Reports();
         reportsOut.initReport();
 
     }
 
     @BeforeTest()
-    public void setup(){
+    public void setup() {
         // Crear opciones de Firefox
         FirefoxOptions options = new FirefoxOptions();
 
@@ -67,7 +67,7 @@ public class BaseTest {
         // instanciamos el navegador a utilizar.
         driver = new FirefoxDriver(options);
 
-        capabilities = ((RemoteWebDriver)driver).getCapabilities();
+        capabilities = ((RemoteWebDriver) driver).getCapabilities();
 
 
         reportsOut.runConfig();
@@ -79,18 +79,16 @@ public class BaseTest {
         //Cargamos la data fake para las pruebas
         dataFaker.dataUser();
         //Instance Pages
-        loginpage =  new LoginPage(driver);
+        loginpage = new LoginPage(driver);
         forgotpage = new ForgotPage(driver);
         registerpage = new RegisterPage(driver);
         orderpage = new OrdersPage(driver);
     }
 
 
-
-
     @AfterTest()
-    public void tearDown(){
-        if(driver != null){
+    public void tearDown() {
+        if (driver != null) {
             System.out.println("Se cierra la sesion");
             //cerramos la sesion
             driver.close();

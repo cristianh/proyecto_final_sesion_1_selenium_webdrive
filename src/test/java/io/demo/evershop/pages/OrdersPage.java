@@ -58,7 +58,7 @@ public class OrdersPage extends BasePage {
     public static String textValidatePageShopping = "Your Store";
     public static String textValidateEmpyProductShopping = "Your shopping cart is empty!";
     public static String textValidateUpdayeQyProductShopping = "Success: You have modified your shopping cart!";
-    public static String textValidateMessague= "Your order has been placed!";
+    public static String textValidateMessague = "Your order has been placed!";
 
 
     protected WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT_EXPLICIT));
@@ -134,9 +134,9 @@ public class OrdersPage extends BasePage {
         selectDeliveryDetails.selectByIndex(1);
     }
 
-    public void textAreaDeliveryMethod(){
+    public void textAreaDeliveryMethod() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(textAreaDeliveryMethod));
-        type(textAreaDeliveryMethod,"NA");
+        type(textAreaDeliveryMethod, "NA");
     }
 
     public void clickDeliveyDetails() {
@@ -164,7 +164,7 @@ public class OrdersPage extends BasePage {
         click(btnViewCardShoppingPage);
     }
 
-    public void clickCheckBoxPrivacite(){
+    public void clickCheckBoxPrivacite() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(inputChechBoxPrivacyPo));
         click(inputChechBoxPrivacyPo);
     }
@@ -181,7 +181,7 @@ public class OrdersPage extends BasePage {
         click(btnUpdateProduct);
     }
 
-    public void clickPayMenthod(){
+    public void clickPayMenthod() {
         click(btnPayMethod);
     }
 
@@ -190,7 +190,7 @@ public class OrdersPage extends BasePage {
         click(btnConfirmOrder);
     }
 
-    public void clickBtnConfirmReturnHome(){
+    public void clickBtnConfirmReturnHome() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(btnContinueReturnHome));
         click(btnContinueReturnHome);
     }
@@ -216,7 +216,7 @@ public class OrdersPage extends BasePage {
         }
     }
 
-    public void validateMessageSuccessOrder(){
+    public void validateMessageSuccessOrder() {
         if (isDisplayElement(messageConfirmOrder))
             assertEquals(getText(messageConfirmOrder), textValidateMessague);
     }

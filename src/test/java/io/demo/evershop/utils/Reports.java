@@ -16,19 +16,19 @@ public class Reports {
     public ExtentTest extentTest;
     public String nombreFile = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
-    public void initReport(){
-        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir")+"/Reports/" + nombreFile + "_index_report.html");
+    public void initReport() {
+        extentSparkReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "/Reports/" + nombreFile + "_index_report.html");
         extentSparkReporter.config().setTheme(Theme.STANDARD);
         extentSparkReporter.config().setDocumentTitle("QA Report Page");
 
     }
 
-    public void configReport(Capabilities dataCapabilities,String descriptionTest,String nameTest){
+    public void configReport(Capabilities dataCapabilities, String descriptionTest, String nameTest) {
 
-        System.out.println("Browser Name: " + dataCapabilities.getBrowserName() );
-        System.out.println("Browser Version: " + dataCapabilities.getBrowserVersion() );
+        System.out.println("Browser Name: " + dataCapabilities.getBrowserName());
+        System.out.println("Browser Version: " + dataCapabilities.getBrowserVersion());
         System.out.println("Plataform Name: " + dataCapabilities.getPlatformName());
-        extentTest = extentReports.createTest(descriptionTest,nameTest);
+        extentTest = extentReports.createTest(descriptionTest, nameTest);
         extentTest.assignAuthor("Pruebas QA");
         //extentTest.assignDevice(dataCapabilities.getPlatformName().toString().toLowerCase());
         extentTest.info("Browser Name: " + dataCapabilities.getBrowserName());
@@ -36,12 +36,12 @@ public class Reports {
         extentTest.info("Platform Name: " + dataCapabilities.getPlatformName());
     }
 
-    public void runConfig(){
+    public void runConfig() {
         extentReports = new ExtentReports();
         extentReports.attachReporter(extentSparkReporter);
     }
 
-    public void clearReport(){
+    public void clearReport() {
         extentReports.flush();
     }
 
