@@ -15,9 +15,9 @@ import static org.testng.AssertJUnit.assertEquals;
 public class HomeTest extends BaseTest {
 
     @Test(description = "TC-Register-01 - Registro exitoso")
-    public void registerTest(){
+    public void registerTest() {
 
-        User data= dataFaker.getNewUser();
+        User data = dataFaker.getNewUser();
 
         //Damos clic en el boton de registro.
         WebElement btnUser = driver.findElement(By.cssSelector("#hrefUserIcon"));
@@ -26,8 +26,8 @@ public class HomeTest extends BaseTest {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(34000));
 
         Boolean isVisibleRegister = wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(), 'CREATE NEW ACCOUNT')]")));
-        if(isVisibleRegister){
-            WebElement btnRegistar =  driver.findElement(By.xpath("//*[contains(text(), 'CREATE NEW ACCOUNT')]"));
+        if (isVisibleRegister) {
+            WebElement btnRegistar = driver.findElement(By.xpath("//*[contains(text(), 'CREATE NEW ACCOUNT')]"));
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("arguments[0].click();", btnRegistar);
         }
@@ -60,7 +60,7 @@ public class HomeTest extends BaseTest {
         //js.executeScript("window.scrollTo(0, document.body.scrollHeight * 0.7);");
 
         System.out.println(radioIgree.isDisplayed());
-        if(radioIgree.isDisplayed()){
+        if (radioIgree.isDisplayed()) {
             js.executeScript("arguments[0].click();", radioIgree);
             //radioIgree.click();
         }
@@ -75,9 +75,9 @@ public class HomeTest extends BaseTest {
         Boolean isLoginUser = driver.findElement(By.cssSelector("#menuUserLink > span")).isDisplayed();
 
         if (isLoginUser) {
-            WebElement loginUser =  driver.findElement(By.cssSelector("#menuUserLink > span"));
+            WebElement loginUser = driver.findElement(By.cssSelector("#menuUserLink > span"));
             String textloginUser = loginUser.getText();
-            assertEquals(textloginUser,data.getFirstName());
+            assertEquals(textloginUser, data.getFirstName());
         }
 
     }

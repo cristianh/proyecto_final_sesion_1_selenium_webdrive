@@ -3,6 +3,7 @@ package io.demo.evershop.pages;
 import com.demo.nopcommerce.models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import static org.testng.AssertJUnit.assertEquals;
 
 public class LoginPage extends BasePage {
@@ -12,7 +13,7 @@ public class LoginPage extends BasePage {
     public static By btnMenuAccountLogin = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
     public static By btnMenuAccountOut = By.cssSelector("a[title='My Account'] +ul >li:last-child a");
     public static By inputEmail = By.cssSelector("#input-email");
-    public static By inputPassword =  By.cssSelector("#input-password");
+    public static By inputPassword = By.cssSelector("#input-password");
     public static By btnLogin = By.cssSelector("input[type='submit']");
     public static By btnForgodPassword = By.cssSelector("#input-password + a");
     public static By messageSuccessLogin = By.cssSelector("#content h2");
@@ -32,42 +33,46 @@ public class LoginPage extends BasePage {
      * La sobrecarga de métodos en Java (method overloading) es una característica que permite definir varios métodos con el mismo nombre dentro de una misma clase,
      * pero con diferentes listas de parámetros (tipo, número o el orden de los parámetros).
      * ¿Para qué sirve?
-     * Sirve para que un metodo realice acciones similares pero con diferentes tipos o cantidades de argumentos, mejorando la legibilidad y reutilización del código.*/
-    public void fillFormLogin(User userlogin){
-        type(inputEmail,userlogin.getEmail());
-        type(inputPassword,userlogin.getPassword());;
+     * Sirve para que un metodo realice acciones similares pero con diferentes tipos o cantidades de argumentos, mejorando la legibilidad y reutilización del código.
+     */
+    public void fillFormLogin(User userlogin) {
+        type(inputEmail, userlogin.getEmail());
+        type(inputPassword, userlogin.getPassword());
+        ;
     }
 
 
-    public void fillFormLogin(){
+    public void fillFormLogin() {
         User newUser = new User();
         newUser.setEmail("nona.klein@hotmail.com");
         newUser.setPassword("@9Pb$XJV&k");
-        type(inputEmail,newUser.getEmail());
-        type(inputPassword,newUser.getPassword());;
+        type(inputEmail, newUser.getEmail());
+        type(inputPassword, newUser.getPassword());
+        ;
     }
 
-    public void clickMyAccount(){
+    public void clickMyAccount() {
         click(btnMenuAccount);
     }
-    public void clickMyAccountLogin(){
+
+    public void clickMyAccountLogin() {
         click(btnMenuAccountLogin);
     }
 
-    public void clickMyAccountOut(){
+    public void clickMyAccountOut() {
         click(btnMenuAccountOut);
     }
 
 
-    public void clickButtonSubmit(){
+    public void clickButtonSubmit() {
         click(btnLogin);
     }
 
-    public void clickButtonForgotPassword(){
+    public void clickButtonForgotPassword() {
         click(btnForgodPassword);
     }
 
-    public void validateMessage(By element,String textValidate){
+    public void validateMessage(By element, String textValidate) {
         if (isDisplayElement(element))
             assertEquals(getText(element), textValidate);
     }

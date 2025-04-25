@@ -1,6 +1,5 @@
 package io.demo.evershop.test;
 
-import io.demo.evershop.pages.CheckoutPage;
 import org.testng.annotations.Test;
 
 import static io.demo.evershop.pages.LoginPage.messageSuccessLogin;

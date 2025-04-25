@@ -5,7 +5,7 @@ import com.github.javafaker.Faker;
 
 public class DataFacker {
 
-    public User newUser= new User();
+    public User newUser = new User();
     private String password;
     public Faker data;
 
@@ -14,7 +14,7 @@ public class DataFacker {
         password = this.data.internet().password(10, 12, true, true, true);
     }
 
-    public void dataUser(){
+    public void dataUser() {
 
         newUser.setFirstName(this.data.address().firstName());
         newUser.setLastName(this.data.address().lastName());

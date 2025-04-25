@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 import static io.demo.evershop.Variables.*;
-import static io.demo.evershop.pages.LoginPage.textValidateSuccessCredencials;
 
 public class BasePage extends BaseTest {
 
@@ -21,7 +20,7 @@ public class BasePage extends BaseTest {
         wait = new WebDriverWait(driver, Duration.ofSeconds(TIME_OUT));
     }
 
-    public void visit(String urlBase){
+    public void visit(String urlBase) {
         //Especificamo un tiempo de espera a que los elementos esten presentes en la pagina
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIME_OUT));
         // Crear una espera explícita
@@ -54,13 +53,13 @@ public class BasePage extends BaseTest {
         }
     }
 
-    public String getText(By element){
+    public String getText(By element) {
         return find(element).getText();
     }
 
-    public boolean isDisplayText(By locator,String text){
+    public boolean isDisplayText(By locator, String text) {
         try {
-            wait.until(ExpectedConditions.invisibilityOfElementWithText(locator,text));
+            wait.until(ExpectedConditions.invisibilityOfElementWithText(locator, text));
             return true;
         } catch (Exception e) {
             return false;

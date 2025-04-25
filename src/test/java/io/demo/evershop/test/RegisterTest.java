@@ -2,8 +2,6 @@ package io.demo.evershop.test;
 
 import com.demo.nopcommerce.models.User;
 import io.demo.evershop.pages.RegisterPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -29,7 +27,7 @@ public class RegisterTest extends BaseTest {
     }
 
 
-    @Test(description = "TC-Register-02 - registro con campos obligatorios faltantes", priority = 2, groups = {"Functional","Integration"})
+    @Test(description = "TC-Register-02 - registro con campos obligatorios faltantes", priority = 2, groups = {"Functional", "Integration"})
     public void registerInputRequiredTest() {
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
@@ -49,7 +47,7 @@ public class RegisterTest extends BaseTest {
     }
 
 
-    @Test(description = "TC-Register-03 - correo formato invalido o incorrecto", priority = 3, groups = {"Functional","Regression"})
+    @Test(description = "TC-Register-03 - correo formato invalido o incorrecto", priority = 3, groups = {"Functional", "Regression"})
     public void registerEmailNotValidateTest() {
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
@@ -71,8 +69,7 @@ public class RegisterTest extends BaseTest {
     }
 
 
-
-    @Test(description = "TC-Register-05 - Confirmación de contraseña",priority = 4, groups = {"Functional","Integration"})
+    @Test(description = "TC-Register-05 - Confirmación de contraseña", priority = 4, groups = {"Functional", "Integration"})
     public void registerPasswordConfimTest() {
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();
@@ -93,7 +90,7 @@ public class RegisterTest extends BaseTest {
         registerpage.clickMyAccountOut();
     }
 
-    @Test(description = "TC-Register-06 - Correo electrónico único",priority = 4, groups = {"Functional","Integration"})
+    @Test(description = "TC-Register-06 - Correo electrónico único", priority = 4, groups = {"Functional", "Integration"})
     public void registerValidateUniqueEmailTest() {
         //Damos clic en el boton de registro.
         registerpage.clickMyAccount();

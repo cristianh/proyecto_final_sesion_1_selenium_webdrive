@@ -2,7 +2,6 @@ package io.demo.evershop.test;
 
 import com.github.javafaker.Faker;
 import io.demo.evershop.DataFacker;
-import io.demo.evershop.Variables;
 import io.demo.evershop.pages.*;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -12,12 +11,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
-import java.time.Duration;
 
 import static io.demo.evershop.Variables.*;
 
@@ -46,7 +42,7 @@ public class BaseTest {
 
 
     @BeforeClass(alwaysRun = true)
-    public void setup(){
+    public void setup() {
         // Crear opciones de Firefox
         FirefoxOptions options = new FirefoxOptions();
 
@@ -59,14 +55,14 @@ public class BaseTest {
         // instanciamos el navegador a utilizar.
         driver = new FirefoxDriver(options);
 
-        Capabilities capabilities = ((RemoteWebDriver)driver).getCapabilities();
+        Capabilities capabilities = ((RemoteWebDriver) driver).getCapabilities();
 
-        System.out.println("Browser Name: " + capabilities.getBrowserName() );
-        System.out.println("Browser Version: " + capabilities.getBrowserVersion() );
+        System.out.println("Browser Name: " + capabilities.getBrowserName());
+        System.out.println("Browser Version: " + capabilities.getBrowserVersion());
         System.out.println("Plataform Name: " + capabilities.getPlatformName());
 
         //Instanciamos los actions
-        actions= new Actions(driver);
+        actions = new Actions(driver);
         //indicamos la configuración del navegador ( abrimos en modo maximizado)
         driver.manage().window().maximize();
         //Abrimos la URL
@@ -74,7 +70,7 @@ public class BaseTest {
         //Cargamos la data fake para las pruebas
         dataFaker.dataUser();
         //Instance Pages
-        loginpage =  new LoginPage(driver);
+        loginpage = new LoginPage(driver);
         forgotpage = new ForgotPage(driver);
         registerpage = new RegisterPage(driver);
         orderpage = new OrdersPage(driver);
@@ -83,8 +79,8 @@ public class BaseTest {
 
 
     @AfterClass(alwaysRun = true)
-    public void tearDown(){
-        if(driver != null){
+    public void tearDown() {
+        if (driver != null) {
             //cerramos la sesion
             driver.close();
         }

@@ -2,6 +2,7 @@ package io.demo.evershop.test;
 
 import com.demo.nopcommerce.models.User;
 import org.testng.annotations.Test;
+
 import static io.demo.evershop.pages.LoginPage.*;
 
 public class LoginTest extends BaseTest {
@@ -12,7 +13,7 @@ public class LoginTest extends BaseTest {
         loginpage.clickMyAccountLogin();
         loginpage.fillFormLogin();
         loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageSuccessLogin,textValidateSuccessCredencials);
+        loginpage.validateMessage(messageSuccessLogin, textValidateSuccessCredencials);
     }
 
     @Test(description = "TC-Login-02 - Inicio de sesión credenciales incorrectas", priority = 2, groups = {"Functional"})
@@ -24,7 +25,7 @@ public class LoginTest extends BaseTest {
         newUser.setPassword("@9Pb$XJV&k3");
         loginpage.fillFormLogin(newUser);
         loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
+        loginpage.validateMessage(messageError, textValidateIncorrectCredencials);
     }
 
     @Test(description = "TC-Login-03 - credenciales en blanco", priority = 3, groups = {"Functional"})
@@ -36,7 +37,7 @@ public class LoginTest extends BaseTest {
         newUser.setPassword("");
         loginpage.fillFormLogin(newUser);
         loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
+        loginpage.validateMessage(messageError, textValidateIncorrectCredencials);
     }
 
     @Test(description = "TC-Login-04 - Correo electrónico no registrado", priority = 4, groups = {"Regression"})
@@ -46,7 +47,7 @@ public class LoginTest extends BaseTest {
         User data = dataFaker.getNewUser();
         loginpage.fillFormLogin(data);
         loginpage.clickButtonSubmit();
-        loginpage.validateMessage(messageError,textValidateIncorrectCredencials);
+        loginpage.validateMessage(messageError, textValidateIncorrectCredencials);
     }
 
     @Test(description = "TC-Login-05 - Contraseña olvidada", priority = 5, groups = {"Functional", "Integration"})
@@ -56,6 +57,6 @@ public class LoginTest extends BaseTest {
         loginpage.clickButtonForgotPassword();
         forgotpage.fillFormForgotPassword("talisha.kirlin@gmail.com");
         forgotpage.clickButtonSubmit();
-        loginpage.validateMessage(messageRemenberCredencials,textValidateRememberPasswordConfirm);
+        loginpage.validateMessage(messageRemenberCredencials, textValidateRememberPasswordConfirm);
     }
 }

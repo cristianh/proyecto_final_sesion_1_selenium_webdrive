@@ -30,7 +30,7 @@ public class CheckoutPage extends BasePage {
 
 
     public static By messageConfirmOrder = By.cssSelector("#content p:first-of-type");
-    public static String textValidateMessague= "Your order has been successfully processed!";
+    public static String textValidateMessague = "Your order has been successfully processed!";
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -74,9 +74,9 @@ public class CheckoutPage extends BasePage {
         selectDeliveryDetails.selectByIndex(1);
     }
 
-    public void textAreaDeliveryMethod(){
+    public void textAreaDeliveryMethod() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(textAreaDeliveryMethod));
-        type(textAreaDeliveryMethod,"NA");
+        type(textAreaDeliveryMethod, "NA");
     }
 
     public void clickDeliveyDetails() {
@@ -92,7 +92,7 @@ public class CheckoutPage extends BasePage {
         click(btnPaymentAddress);
     }
 
-    public void clickPayMenthod(){
+    public void clickPayMenthod() {
         click(btnPayMethod);
     }
 
@@ -101,12 +101,12 @@ public class CheckoutPage extends BasePage {
         click(btnConfirmOrder);
     }
 
-    public void clickCheckBoxPrivacite(){
+    public void clickCheckBoxPrivacite() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(inputChechBoxPrivacyPo));
         click(inputChechBoxPrivacyPo);
     }
 
-    public void validateMessageSuccessOrder(){
+    public void validateMessageSuccessOrder() {
         if (isDisplayElement(messageConfirmOrder))
             assertEquals(getText(messageConfirmOrder), textValidateMessague);
     }

@@ -13,7 +13,7 @@ import java.util.List;
 
 import static io.demo.evershop.Variables.TIME_OUT_EXPLICIT;
 import static org.testng.Assert.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
+
 
 public class OrdersPage extends BasePage {
 
@@ -34,7 +34,6 @@ public class OrdersPage extends BasePage {
     public static By inputQyItemProductShoppingPage = By.cssSelector("input[type='text'][value='1']");
 
     public List<WebElement> cardProductsElement;
-
 
 
     public static String textValidateProductShoppingCard = "Success: You have added Canon EOS 5D to your shopping cart!";
@@ -104,8 +103,7 @@ public class OrdersPage extends BasePage {
     }
 
 
-
-    public void clickBtnConfirmReturnHome(){
+    public void clickBtnConfirmReturnHome() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(btnContinueReturnHome));
         click(btnContinueReturnHome);
     }
